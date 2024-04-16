@@ -1,0 +1,263 @@
+{% extends "pages/base.html"%}
+{% load static %}
+{% block title %}Register{%endblock%}
+{% block content %}
+
+<!-- <section class="vh-100 bg-image"
+style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              <strong>Message:</strong> {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+            {% endfor %}
+
+            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+            <form method="POST" action=".">
+            {% csrf_token %}
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example1cg" class="col-sm-3 col-form-label">User Name</label>
+                <div class="col-sm-6">
+                  {{ form.username }}
+                </div>
+              </div>
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example3cg" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-6">
+                  {{ form.email }}
+                </div>
+              </div>
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example3cg" class="col-sm-3 col-form-label">First Name</label>
+                <div class="col-sm-6">
+                  {{ form.first_name }}
+                </div>
+              </div>
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example3cg" class="col-sm-3 col-form-label">Last Name</label>
+                <div class="col-sm-6">
+                  {{ form.last_name }}
+                </div>
+              </div>
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example4cg" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-6">
+                  {{ form.password1 }}
+                </div>
+              </div>
+
+              <div class="form-group mb-4 row">
+                <label for="form3Example4cdg" class="col-sm-3 col-form-label">Repeat your password</label>
+                <div class="col-sm-6">
+                  {{ form.password2 }}
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit"
+                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+              </div>
+              <p class="text-center h6 fw-bold mb-5 mx-1 mx-md-4 mt-4">Have already an account?<a href="{% url 'signin' %}">Login here</a></p>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section> -->
+
+<!-- <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong> {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                            <form method="POST" action=".">
+                                {% csrf_token %}
+
+                                <div class="form-group mb-4 row">
+                                    <label for="username" class="col-sm-3 col-form-label">User Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="username" name="username" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 row">
+                                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 row">
+                                    <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 row">
+                                    <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 row">
+                                    <label for="password1" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" id="password1" name="password1" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 row">
+                                    <label for="password2" class="col-sm-3 col-form-label">Repeat your password</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" id="password2" name="password2" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                </div>
+                                <p class="text-center h6 fw-bold mb-5 mx-1 mx-md-4 mt-4">Have already an account?<a href="{% url 'signin' %}">Login here</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<div class="form-content my-3 p-3">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-5">
+              <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                  <div class="card-header justify-content-center">
+                      <h3 class="font-weight-light my-4 text-center">Sign up</h3>
+                  </div>
+                  {% if form.errors %}
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                          <div id="form_errors">
+                              {% for key, value in form.errors.items %}
+                                  <strong>{{ value }}</strong>
+                              {% endfor %}
+                          </div>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  {% endif %}
+
+                  <div class="card-body">
+                      <form method="POST">
+                          {% csrf_token %}
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_username">Username</label>
+                                      <input type="text" name="username" autocomplete="username"
+                                             class="form-control" required id="id_username"
+                                             placeholder="Enter your username"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_email">Email</label>
+                                      <input type="email" name="email" autocomplete="email"
+                                             class="form-control" required id="id_email"
+                                             placeholder="Enter your email"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_first_name">First Name</label>
+                                      <input type="text" name="first_name" autocomplete="given-name"
+                                             class="form-control" required id="id_first_name"
+                                             placeholder="Enter your first name"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_last_name">Last Name</label>
+                                      <input type="text" name="last_name" autocomplete="family-name"
+                                             class="form-control" required id="id_last_name"
+                                             placeholder="Enter your last name"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_password1">Password</label>
+                                      <input type="password" name="password1" autocomplete="new-password"
+                                             class="form-control" required id="id_password1"
+                                             placeholder="Enter your password"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group">
+                                      <label class="small mb-1" for="id_password2">Repeat your password</label>
+                                      <input type="password" name="password2" autocomplete="new-password"
+                                             class="form-control" required id="id_password2"
+                                             placeholder="Repeat your password"/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col-md-10 offset-md-1">
+                                  <div class="form-group mt-0 mb-1">
+                                      <button type="submit" class="col-md-12 btn btn-primary">Register</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr class="my-4">
+                          <p class="text-center h6 fw-bold mb-5 mx-1 mx-md-4 mt-4">Already have an account? <a href="{% url 'signin' %}">Sign in here</a></p>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+{%endblock%}

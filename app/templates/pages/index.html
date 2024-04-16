@@ -1,0 +1,347 @@
+{% extends "pages/base.html"%}
+{% load static %}
+{% block title %}Home{%endblock%}
+{% block content %}
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6">
+          <div class="detail-box">
+            <h2>
+              CÔNG TY TNHH KỸ THUẬT NĂNG LƯỢNG XANH VĨNH CỬU
+            </h2>
+            <p>
+              Công ty TNHH Kỹ Thuật Năng Lượng Xanh Vĩnh Cửu là một doanh nghiệp hoạt động trong lĩnh vực công nghệ và kỹ thuật năng lượng xanh. Chúng tôi cam kết cung cấp các giải pháp hiệu quả và bền vững về năng lượng, nhằm đóng góp vào sự phát triển bền vững của xã hội và môi trường. <br>
+              Với đội ngũ nhân viên giàu kinh nghiệm và trình độ chuyên môn cao, chúng tôi không ngừng nỗ lực nghiên cứu, phát triển và ứng dụng các công nghệ mới nhất trong lĩnh vực năng lượng xanh. Chúng tôi tự hào về khả năng cung cấp các dịch vụ và sản phẩm chất lượng, đáp ứng được nhu cầu đa dạng của khách hàng. <br>
+            </p>
+            <a href="">
+              Xem nhiều hơn
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/setup.jpg' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+  <!-- professional section -->
+
+  <section class="professional_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/professional-img.png' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="detail-box">
+            <h2>
+              Chúng tôi cung cấp các <br> dịch vụ chuyên nghiệp 
+            </h2>
+            <p>
+              Lắp đặt, vận hành và bảo trì hệ thống điện năng lượng mặt trời <br>
+              Thi công lắp đặt hệ thống điện & nước (m&e) công trình dân dụng và công nghiệp <br>
+              Kiểm toán năng lượng – triển khai giải pháp tiết kiệm điện <br>
+              IoT dân dụng và công nghiệp
+            </p>
+            <a href="{% url 'service' %}">
+              Xem nhiều hơn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end professional section -->
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="container ">
+        <div class="heading_container heading_center">
+            <h2>Các dịch vụ của chúng tôi</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s1.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>LẮP ĐẶT, VẬN HÀNH VÀ BẢO TRÌ HỆ THỐNG ĐIỆN NĂNG LƯỢNG MẶT TRỜI (NHÀ THẦU EPC VỀ ĐIỆN NĂNG LƯỢNG MẶT TRỜI)</h5>
+                      <!-- <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s2.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>THI CÔNG LẮP ĐẶT HỆ THỐNG ĐIỆN & NƯỚC (M&E) CÔNG TRÌNH DÂN DỤNG và CÔNG NGHIỆP</h5>
+                      <!-- <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s4.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>KIỂM TOÁN NĂNG LƯỢNG – TRIỂN KHAI GIẢI PHÁP TIẾT KIỆM ĐIỆN</h5>
+                      <!-- <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p> -->
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s3.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>IoT DÂN DỤNG và CÔNG NGHIỆP</h5>
+                      <!-- <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal</p> -->
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+        <br>
+        <br>
+
+        <div class="heading_container heading_center">
+          <h2>TƯ VẤN CHUYÊN MÔN</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s1.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>TƯ VẤN HỆ THỐNG ĐIỆN</h5>
+                      <p></p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s2.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>GIÁM SÁT VÀ ĐO LƯỜNG TỪ XA</h5>
+                      <p></p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-6 col-md-3 d-flex justify-content-center">
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/s3.png' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                      <h5>SỬ DỤNG ĐIỆN HIỆU QUẢ</h5>
+                      <p></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+        <div class="btn-box">
+            <a href="#">Xem nhiều hơn</a>
+        </div>
+    </div>
+  </section>
+
+
+  <!-- end service section -->
+
+  <!-- client section -->
+
+  <section class="client_section ">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Cảm nhận của khách hàng khi sử dụng dịch vụ của chúng tôi
+        </h2>
+      </div>
+      <div class="carousel-wrap layout_padding2-top ">
+        <div class="owl-carousel">
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/client-1.jpg '%}" alt="">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>
+                      Nguyễn Hồng Phát
+                    </h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>Tôi rất hạnh phúc với quyết định chuyển sang sử dụng điện năng lượng mặt trời cho ngôi nhà của mình. Hệ thống này hoạt động rất hiệu quả và ổn định. Tôi cũng rất ấn tượng với dịch vụ lắp đặt và hỗ trợ của nhà cung cấp. Họ đã cung cấp cho tôi các thông tin chi tiết về cách hoạt động của hệ thống và giúp tôi chọn lựa một giải pháp phù hợp với nhu cầu của gia đình.</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/client-2.jpg '%}" alt="">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>
+                      Ngô Văn Thanh
+                    </h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>Tôi ấn tượng với khả năng tiết kiệm và hiệu quả của hệ thống. Tính đến nay, tôi đã không gặp phải bất kỳ vấn đề kỹ thuật nào và hệ thống hoạt động rất ổn định. Ngoài ra, dịch vụ hỗ trợ của nhà cung cấp cũng rất tuyệt vời. Họ luôn sẵn lòng giải đáp mọi thắc mắc của tôi và cung cấp sự hỗ trợ kỹ thuật khi cần thiết.</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/ava.jpg '%}" alt="">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>
+                      Lê Thị Kim Ngọc
+                    </h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>
+                  Trước khi chuyển sang sử dụng điện mặt trời, hóa đơn điện hàng tháng của tôi thường rất cao, nhưng từ khi sử dụng hệ thống năng lượng mặt trời, tôi đã tiết kiệm được một khoản đáng kể. Tôi cảm thấy hài lòng khi biết rằng mình đang đóng góp vào việc giảm thiểu lượng khí thải carbon và giữ gìn nguồn tài nguyên thiên nhiên.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/avatanam.jpg '%}" alt="">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>
+                      Nguyễn Tấn Đạt
+                    </h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>
+                  Hệ thống hoạt động ổn định và hiệu quả. Tôi không gặp phải bất kỳ vấn đề kỹ thuật nào từ khi lắp đặt, và dịch vụ hỗ trợ từ nhà cung cấp cũng rất đáng tin cậy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="" method="post">
+            {% csrf_token %}
+            <div>
+              <input type="text" name="name" placeholder="Name" />
+            </div>
+            <div>
+              <input type="text" name="phone" placeholder="Phone Number" />
+            </div>
+            <div>
+              <input type="email" name="email" placeholder="Email" />
+            </div>
+            <div>
+              <input type="text" name="message" class="message-box" placeholder="Message" />
+            </div>
+            <div class="d-flex ">
+              <button>
+                SEND
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.013084639947!2d106.65951381091833!3d10.962383855690462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d6cdae360fa7%3A0xad299428406265ae!2zMTAgxJDGsOG7nW5nIEQyIEtodSBUw6FpIMSQ4buLbmggQ8awLCBDaMOhbmggTmdoxKlhLCBUaOG7pyBE4bqndSBN4buZdCwgQsOsbmggRMawxqFuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1712817883423!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+  <style>
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      color: black; 
+    }
+  </style>
+{%endblock%}

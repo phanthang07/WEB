@@ -1,0 +1,76 @@
+{% extends "pages/base.html"%}
+{% load static %}
+{% block title %}Project{%endblock%}
+{% block content %}
+
+  <!-- start all project section -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-6"> 
+        <section class="about_section layout_padding">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12"> 
+                <div class="detail-box">
+                  <h2>
+                    Tất cả các dự án của chúng tôi
+                  </h2>
+                  <form action="" method="GET">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter Id" name="keyword" value="{{ keyword }}" />
+                    <input type="submit" value="Search" />
+                  </form>
+                  <br>
+                  {% for project in Projects %}
+                  <div class="card" style="width: 100%; height: 200px;">
+                    <a href="{% url 'project' project.id %}">Project {{ project.id }}</a>
+                    <div class="card-body">
+                      <p class="card-text">{{ project.history }}</p>
+                      <h5>Date: {{ project.date|date:"d-m-Y" }}</h5>
+                    </div>
+                  </div>
+                  <br>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- end all project section -->
+
+  <!-- Paginator Start -->
+  <style>
+    .pagination a {
+        font-size: 22px; /* Điều chỉnh kích thước chữ cho các liên kết phân trang */
+        margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết phân trang */
+    }
+    .current {
+        font-size: 18px; /* Điều chỉnh kích thước chữ cho phần hiển thị số trang hiện tại */
+    }
+  </style>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if Projects.has_previous %}
+                    <a href="?page={{ Projects.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ Projects.number }} of {{ Projects.paginator.num_pages }}.
+                    </span>
+                    {% if Projects.has_next %}
+                    <a href="?page={{ Projects.next_page_number }}">Next</a>
+                    {% endif %}
+                </span>
+            </div>
+        </li>
+    </ul>
+  </nav>
+    <!-- Paginator End -->
+{%endblock%}

@@ -1,0 +1,64 @@
+{% extends "pages/base.html"%}
+{% load static %}
+{% block title %}Post {{project.id}}{%endblock%}
+{% block content %}
+<!-- {{post.body|safe|linebreaks}} -->
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <section class="about_section layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="detail-box">
+                <div class="card mb-3" style="width: 100%;">
+                  <a href="/posts/{{ post.id }}">{{ post.title }}</a>
+                  <div class="card-body">
+                    <div class="post-meta">
+                      <h5 class="text-muted">On {{ post.date }}</h5>
+                    </div>
+                    <img src="/media/{{post.image}}" class="img-fluid">
+                    <p class="post-content">{{ post.body|safe|linebreaks }}</p>
+                  </div>
+                </div>
+                <div class="comments-section">
+                  <h4>Ý kiến</h4>
+                  {% for comment in post.comments.all %}
+                  <div class="comment">
+                    <div class="comment-header">
+                      <h5 class="comment-author"><strong>{{ comment.author }}</strong></h5>
+                      <h6 class="comment-date"><p>{{ comment.date }}</p></h6>
+                    </div>
+                    <p class="comment-body">{{ comment.body|linebreaks }}</p>
+                  </div>
+                  {% endfor %}
+
+                  {% if user.username %}
+                  <div class="comment-form">
+                    <form action="{% url 'post' post.id %}" method="POST">
+                      {% csrf_token %}
+                      <label for="comment-body">Để lại bình luận:</label>
+                      <br>
+                      {{ form.body }}
+                      <br>
+                      <button type="submit" class="btn btn-primary">Bình luận</button>
+                    </form>
+                  </div>
+                  {% else %}
+                  <!-- <div class="comment-form"> -->
+                    <a href="{% url 'signin' %}">Đăng nhập dể bình luận</a>
+                  <!-- </div> -->
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

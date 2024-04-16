@@ -1,0 +1,77 @@
+{% extends "pages/base.html"%}
+{% load static %}
+{% block title %}Posts{%endblock%}
+{% block content %}
+
+  <!-- start all project section -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-6"> 
+        <section class="about_section layout_padding">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12"> 
+                <div class="detail-box">
+                  <h2>
+                    All posts
+                  </h2>
+                  <form action="" method="GET">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter Id" name="keyword" value="{{ keyword }}" />
+                    <input type="submit" value="Search" />
+                  </form>
+                  <br>
+                  {% for post in Posts %}
+                  <div class="card" style="width: 100%; height: auto;">
+                    <a href="{% url 'post' post.id %}">{{ post.title }}</a>
+                    <div class="card-body">
+                      <h5>Date: {{ post.date|date:"d-m-Y" }}</h5>
+                      <img src="/media/{{post.image}}" class="img-fluid">
+                    </div>
+                  </div>
+                  <br>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  <!-- end all project section -->
+
+  <!-- Paginator Start -->
+  <style>
+    .pagination a {
+        font-size: 22px; /* Điều chỉnh kích thước chữ cho các liên kết phân trang */
+        margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết phân trang */
+    }
+    .current {
+        font-size: 18px; /* Điều chỉnh kích thước chữ cho phần hiển thị số trang hiện tại */
+    }
+  </style>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if Posts.has_previous %}
+                    <a href="?page={{ Posts.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ Posts.number }} of {{ Posts.paginator.num_pages }}.
+                    </span>
+                    {% if Posts.has_next %}
+                    <a href="?page={{ Posts.next_page_number }}">Next</a>
+                    {% endif %}
+                </span>
+            </div>
+        </li>
+    </ul>
+  </nav>
+    <!-- Paginator End -->
+{%endblock%}
