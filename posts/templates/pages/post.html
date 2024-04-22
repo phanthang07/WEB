@@ -39,9 +39,10 @@
                       {% csrf_token %}
                       <label for="comment-body">Để lại bình luận:</label>
                       <br>
-                      {{ form.body }}
-                      <br>
+                      <input type="text" id="comment-body" name="body" placeholder="Nhập bình luận của bạn..." style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; flex: 1;" />
+                      <!-- <br> -->
                       <button type="submit" class="btn btn-primary">Bình luận</button>
+                      <br>
                     </form>
                   </div>
                   {% else %}

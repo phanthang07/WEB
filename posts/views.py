@@ -35,12 +35,30 @@ def list(request):
 #     project = Post.objects.get(id=id)
 #     return render(request, 'pages/post.html', {'post':post})
 
+# def post(request, id):
+#     post = get_object_or_404(Post, id=id)
+#     form = CommentForm()
+#     if request.method =='POST':
+#         form = CommentForm(request.POST, author=request.user,post=post)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect(request.path)
+#     return render(request, 'pages/post.html', {'post':post,'form':form})
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from .forms import CommentForm  # Đảm bảo import đúng form CommentForm
+from .models import Post
+
 def post(request, id):
     post = get_object_or_404(Post, id=id)
     form = CommentForm()
-    if request.method =='POST':
-        form = CommentForm(request.POST, author=request.user,post=post)
+    comments = post.comments.all()  # Lấy tất cả các bình luận của bài viết
+    if request.method == 'POST':
+        form = CommentForm(request.POST, author=request.user, post=post)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(request.path)
-    return render(request, 'pages/post.html', {'post':post,'form':form})
+            # Sau khi lưu bình luận, bạn cần làm mới form để chuẩn bị cho bình luận mới
+            form = CommentForm()
+            # Đảm bảo bạn lấy danh sách bình luận mới sau khi thêm
+            comments = post.comments.all()
+    return render(request, 'pages/post.html', {'post': post, 'form': form, 'comments': comments})
+

@@ -27,8 +27,8 @@ def home(request):
         return redirect('thank')
     return render(request, "pages/index.html")
 
-def about(request):
-    return render(request, "pages/about.html")
+def customer(request):
+    return render(request, "pages/customer.html")
 
 def service(request):
     return render(request, "pages/service.html")

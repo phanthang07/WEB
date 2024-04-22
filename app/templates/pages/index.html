@@ -2,24 +2,36 @@
 {% load static %}
 {% block title %}Home{%endblock%}
 {% block content %}
-
   <!-- about section -->
-
   <section class="about_section layout_padding-bottom">
     <div class="container">
+      <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+        <span>
+            <span>
+                <a href="{% url 'home' %}">Trang chủ</a>
+            </span>
+        </span>    
+      </div>
+      <br>
       <div class="row">
         <div class="col-lg-5 col-md-6">
           <div class="detail-box">
             <h2>
               CÔNG TY TNHH KỸ THUẬT NĂNG LƯỢNG XANH VĨNH CỬU
             </h2>
-            <p>
-              Công ty TNHH Kỹ Thuật Năng Lượng Xanh Vĩnh Cửu là một doanh nghiệp hoạt động trong lĩnh vực công nghệ và kỹ thuật năng lượng xanh. Chúng tôi cam kết cung cấp các giải pháp hiệu quả và bền vững về năng lượng, nhằm đóng góp vào sự phát triển bền vững của xã hội và môi trường. <br>
-              Với đội ngũ nhân viên giàu kinh nghiệm và trình độ chuyên môn cao, chúng tôi không ngừng nỗ lực nghiên cứu, phát triển và ứng dụng các công nghệ mới nhất trong lĩnh vực năng lượng xanh. Chúng tôi tự hào về khả năng cung cấp các dịch vụ và sản phẩm chất lượng, đáp ứng được nhu cầu đa dạng của khách hàng. <br>
-            </p>
-            <a href="">
+            <p><strong>“Hữu ích”</strong> và <strong>“Xanh”</strong> là tiêu chí cốt lõi mà công ty chúng tôi sử dụng để đưa ra giải pháp cho khách hàng.</p>
+            <p></p>Phương án, sản phẩm “hữu ích” sẽ đem lại lợi nhuận. Giải pháp, thiết bị “xanh” thì thuận theo tự nhiên nên sẽ bền vững, và đặc biệt là góp phần bảo vệ Trái Đất cho thế hệ sau.</p>
+            <ul>
+                <li>Sử dụng năng lượng tái tạo;</li>
+                <li>Sử dụng Điện đúng cách, đúng tiêu chuẩn;</li>
+                <li>Sử dụng năng lượng tiết kiệm, hợp lý;</li>
+                <li>Áp dụng công nghệ IoT để giám sát và điều khiển.</li>
+                <li>Là những thương vụ “<strong>Hữu ích và Xanh</strong>”.</li>
+            </ul>
+        
+            <!-- <a href="">
               Xem nhiều hơn
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="col-lg-7 col-md-6">

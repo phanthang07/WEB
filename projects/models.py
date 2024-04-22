@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Project(models.Model):
+    title = models.CharField(max_length = 255)
     locations = models.CharField(max_length = 255)
     power = models.TextField()
     pv = models.TextField()
