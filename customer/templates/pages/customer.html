@@ -4,8 +4,17 @@
 {% block content %}
 
   <!-- Customers section -->
-  
-  <div style="width: 70%; margin: 0 auto;">
+  <div class="container ">
+    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+      <span>
+          <span>
+              <a href="{% url 'home' %}">Trang chủ</a> » 
+                  <span class="breadcrumb_last" aria-current="page">Dịch vụ</span>
+          </span>
+      </span>    
+  </div>
+  <br>
+  <div style="width: 100%; margin: 0 auto;">
     <table class="table table-striped">
       <thead>
           <tr>
@@ -27,7 +36,7 @@
       </tbody>
     </table>
 </div>
-
+</div>
   <!-- end Customers section -->
 
 {%endblock%}
