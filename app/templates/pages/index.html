@@ -5,20 +5,13 @@
   <!-- about section -->
   <section class="about_section layout_padding-bottom">
     <div class="container">
-      <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-        <span>
-            <span>
-                <a href="{% url 'home' %}">Trang chủ</a>
-            </span>
-        </span>    
-      </div>
-      <br>
+      
       <div class="row">
-        <div class="col-lg-5 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="detail-box">
-            <h2>
+            <!-- <h2>
               CÔNG TY TNHH KỸ THUẬT NĂNG LƯỢNG XANH VĨNH CỬU
-            </h2>
+            </h2> -->
             <p><strong>“Hữu ích”</strong> và <strong>“Xanh”</strong> là tiêu chí cốt lõi mà công ty chúng tôi sử dụng để đưa ra giải pháp cho khách hàng.</p>
             <p></p>Phương án, sản phẩm “hữu ích” sẽ đem lại lợi nhuận. Giải pháp, thiết bị “xanh” thì thuận theo tự nhiên nên sẽ bền vững, và đặc biệt là góp phần bảo vệ Trái Đất cho thế hệ sau.</p>
             <ul>
@@ -28,15 +21,27 @@
                 <li>Áp dụng công nghệ IoT để giám sát và điều khiển.</li>
                 <li>Là những thương vụ “<strong>Hữu ích và Xanh</strong>”.</li>
             </ul>
-        
+            <p><strong>“Efficiency,”</strong> and <strong>“Green”</strong> are the core values that we dedicate to deliver to our customers.</p>
+            <p>“Efficient” plans and products will maximize profit. “Green” solutions and equipment mean sustainability, and especially contribute to protecting Mother Earth for future generations.</p>
+            <ul>
+                <li>Using renewable energy;</li>
+                <li>Using electricity in proper ways and meeting high standards;</li>
+                <li>Energy efficiency;</li>
+                <li>Applying IoT technology for monitoring and control.</li>
+                <li>These are “Efficiency and Green” businesses.</li>
+            </ul>
+
             <!-- <a href="">
               Xem nhiều hơn
             </a> -->
           </div>
         </div>
-        <div class="col-lg-7 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="img-box">
             <img src="{% static 'images/setup.jpg' %}" alt="">
+          </div>
+          <div class="img-box">
+            <img src="{% static 'images/model.jpg' %}" alt="">
           </div>
         </div>
       </div>
@@ -51,12 +56,12 @@
   <section class="professional_section layout_padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div class="img-box">
             <img src="{% static 'images/professional-img.png' %}" alt="">
           </div>
         </div>
-        <div class="col-md-6 ">
+        <div class="col-md-7 ">
           <div class="detail-box">
             <h2>
               Chúng tôi cung cấp các <br> dịch vụ chuyên nghiệp 
