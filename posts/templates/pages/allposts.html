@@ -3,44 +3,6 @@
 {% block title %}Posts{%endblock%}
 {% block content %}
 
-  <!-- start all project section -->
-  <!-- <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-6"> 
-        <section class="about_section layout_padding">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12"> 
-                <div class="detail-box">
-                  <h2>
-                    Hỏi đáp
-                  </h2>
-                  <form action="" method="GET" style="display: flex; align-items: center;">
-                    {% csrf_token %}
-                    <input type="text" placeholder="Enter Id" name="keyword" value="{{ keyword }}" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; flex: 1;" />
-                    <input type="submit" value="Search" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-left: 10px;" />
-                  </form>
-                  <br>
-                  {% for post in Posts %}
-                  <div class="card" style="width: 100%; height: auto;">
-                    <a href="{% url 'post' post.id %}">{{ post.title }}</a>
-                    <div class="card-body">
-                      <h5>Date: {{ post.date|date:"d-m-Y" }}</h5>
-                      <img src="/media/{{post.image}}" class="img-fluid">
-                    </div>
-                  </div>
-                  <br>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-   -->
-
    <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-lg-10"> <!-- Thay đổi từ col-lg-6 thành col-lg-10 để tăng kích thước của container -->
