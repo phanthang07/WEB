@@ -14,21 +14,20 @@ def list(request):
     limit = 5
     page = request.GET.get("page", 1)
     keyword = request.GET.get("keyword")
-
+    print(keyword)
     if keyword:
-        project_list = Project.objects.filter(id = keyword)
+        project_list = Project.objects.filter(title__icontains=keyword)
     else:
         project_list = Project.objects.all()
-    project_list = project_list.order_by("-date").values()
 
     #paging
-    project_paginator = Paginator(project_list, limit)
+    project_paginator = Paginator(project_list.order_by("-date").values(), limit)
     try:
-        project_paginator = project_paginator.get_page(page)
+        project_paginator = project_paginator.page(page)
     except PageNotAnInteger:
-        project_paginator = project_paginator.get_page(1)
+        project_paginator = project_paginator.page(1)
     except EmptyPage:
-         project_paginator = project_paginator.get_page(project_paginator.num_pages)
+        project_paginator = project_paginator.page(project_paginator.num_pages)
 
     context = {
         "Projects": project_paginator,
