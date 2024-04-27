@@ -8,6 +8,16 @@
     <div class="col-lg-12">
       <section class="about_section layout_padding">
         <div class="container">
+          <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+            <span>
+                <span>
+                    <a href="{% url 'home' %}">Trang chủ</a> » 
+                    <a href="{% url 'posts' %}">Hỏi đáp</a> » 
+                    <span class="breadcrumb_last" aria-current="page">{{ post.title }}</span>
+                </span>
+            </span>    
+        </div>
+        <br>        
           <div class="row">
             <div class="col-lg-12">
               <div class="detail-box">
