@@ -35,9 +35,28 @@ def list(request):
     }
     return render(request, 'pages/allprojects.html', context)
 # @login_required
-def project(request, id):
+# def project(request, id):
+#     # Lấy dự án hoặc ném lỗi 404 nếu không tìm thấy
+#     project = get_object_or_404(Project, id=id)
+
+#     if request.method == 'POST':
+#         form = PasswordForm(request.POST)
+#         if form.is_valid():
+#             password = form.cleaned_data['password']
+#             # Kiểm tra mật khẩu
+#             if password == project.project_password:
+#                 # Nếu mật khẩu đúng, hiển thị trang dự án
+#                 return render(request, 'pages/project.html', {'project': project})
+#             else:
+#                 # Nếu mật khẩu không đúng, hiển thị form nhập lại mật khẩu với thông báo lỗi
+#                 error_message = "Mật khẩu không đúng. Vui lòng thử lại."
+#                 return render(request, 'pages/inputpassword.html', {'form': form, 'error_message': error_message})
+#     else:
+#         form = PasswordForm()
+#     return render(request, 'pages/inputpassword.html', {'form': form})
+def project(request, slug):
     # Lấy dự án hoặc ném lỗi 404 nếu không tìm thấy
-    project = get_object_or_404(Project, id=id)
+    project = get_object_or_404(Project, slug=slug)
 
     if request.method == 'POST':
         form = PasswordForm(request.POST)
@@ -55,6 +74,4 @@ def project(request, id):
         form = PasswordForm()
     return render(request, 'pages/inputpassword.html', {'form': form})
 
-# def error(request):
-#     return render(request, 'pages/error.html')
 

@@ -32,7 +32,8 @@
                   <br>
                   {% for project in Projects %}
                   <div class="card" style="width: 100%; height: 200px;">
-                    <a href="{% url 'project' project.id %}">{{ project.title }}</a>
+                    <!-- <a href="{% url 'project' project.id %}">{{ project.title }}</a> -->
+                    <a href="{% url 'project' project.slug %}">{{ project.title }}</a>
                     <div class="card-body">
                       <!-- <p class="card-text">Địa điểm: {{ project.locations }}</p> -->
                       <h5>Địa điểm: {{ project.locations }}</h5>
