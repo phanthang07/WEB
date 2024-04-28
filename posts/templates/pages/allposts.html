@@ -30,7 +30,8 @@
                   <div class="card-body text-center">
                     <!-- <h5>Date: {{ post.date|date:"d-m-Y" }}</h5> -->
                     <img src="/media/{{post.image}}" class="card-img" width="400" height="280">
-                    <h5 class="post-title"><a href="{% url 'post' post.id %}">{{ post.title }}</a></h5>  
+                    <!-- <h5 class="post-title"><a href="{% url 'post' post.id %}">{{ post.title }}</a></h5>   -->
+                    <h5 class="post-title"><a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a></h5>
                   </div>
                 </div>
               </div>
