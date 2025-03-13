@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""admin, thangpv1, admin1 / 123P@ssWord"""
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
