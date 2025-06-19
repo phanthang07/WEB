@@ -1,45 +1,77 @@
 {% extends "pages/base.html"%}
 {% load static %}
-{% block title %}Customers{%endblock%}
-{% block content %}
+{% block title %}Customers{% endblock %}
 
-  <!-- Customers section -->
-  <div class="container ">
-    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-      <span>
-          <span>
-              <a href="{% url 'home' %}">Trang chủ</a> » 
-                  <span class="breadcrumb_last" aria-current="page">Khách hàng</span>
-          </span>
-      </span>    
-  </div>
-  <br>
-  <div style="width: 100%; margin: 0 auto;">
-    <table class="table table-striped">
-      <thead>
-          <tr>
-              <th scope="col">STT</th>
-              <th scope="col">Mã khách hàng</th>
-              <th scope="col">Kiểu khách hàng</th>
-              <th scope="col">Tên</th>
-              <!-- <th scope="col">Địa chỉ</th> -->
-              <!-- <th scope="col">Thông tin liên lạc</th> -->
-          </tr>
+{% block content %}
+<div class="container py-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
+    </ol>
+  </nav>
+
+  <!-- Search Bar -->
+  <form action="" method="GET" class="d-flex justify-content-center my-4">
+    {% csrf_token %}
+    <input type="text" name="keyword" class="form-control w-50 me-2 shadow-sm" placeholder="Tìm kiếm theo tên hoặc mã khách hàng..." value="{{ request.GET.keyword }}">
+    <button type="submit" class="btn btn-outline-primary">🔍 Tìm</button>
+  </form>
+
+  <!-- Customers Table -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Mã khách hàng</th>
+          <th scope="col">Kiểu khách hàng</th>
+          <th scope="col">Tên</th>
+        </tr>
       </thead>
       <tbody>
-          {% for customer in Customers %}
-          <tr>
-              <th scope="row">{{ forloop.counter }}</th>
-              <td>{{ customer.customercode }}</td>
-              <td>{{ customer.customertype }}</td>
-              <td>{{ customer.name }}</td>
-              <!-- <td>{{ customer.locations }}</td> -->
-          </tr>
-          {% endfor %}
+        {% for customer in Customers %}
+        <tr>
+          <th scope="row">{{ forloop.counter0|add:Customers.start_index }}</th>
+          <td>{{ customer.customercode }}</td>
+          <td>{{ customer.customertype }}</td>
+          <td>{{ customer.name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center text-muted">Không tìm thấy khách hàng phù hợp.</td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
-</div>
-</div>
-  <!-- end Customers section -->
+  </div>
 
-{%endblock%}
+  <!-- Pagination -->
+  {% if Customers.paginator.num_pages > 1 %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if Customers.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?{% if request.GET.keyword %}keyword={{ request.GET.keyword }}&{% endif %}page={{ Customers.previous_page_number }}">« Trước</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">« Trước</span></li>
+      {% endif %}
+
+      <li class="page-item disabled">
+        <span class="page-link">Trang {{ Customers.number }} / {{ Customers.paginator.num_pages }}</span>
+      </li>
+
+      {% if Customers.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?{% if request.GET.keyword %}keyword={{ request.GET.keyword }}&{% endif %}page={{ Customers.next_page_number }}">Tiếp »</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">Tiếp »</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

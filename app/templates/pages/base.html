@@ -76,12 +76,20 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{% url 'home' %}">
+            <!-- <a class="navbar-brand" href="{% url 'home' %}">
               <img src="{% static 'images/logo.jpg' %}" alt="" width="120" height="100">
               <span>
                 CÔNG TY TNHH KỸ THUẬT NĂNG LƯỢNG XANH VĨNH CỬU
               </span>
+            </a> -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+              <img src="{% static 'images/logo.jpg' %}" alt="Logo" width="90" height="75">
+              <span class="fw-bold d-none d-md-block" style="color: #138717; font-size: 1.2rem; line-height: 1.2;">
+                CÔNG TY TNHH KỸ THUẬT NĂNG LƯỢNG XANH VĨNH CỬU
+              </span>
             </a>
+
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class=""> </span>

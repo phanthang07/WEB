@@ -1,59 +1,68 @@
-{% extends "pages/base.html"%}
+{% extends "pages/base.html" %}
 {% load static %}
-{% block title %}Project {{project.id}}{%endblock%}
-{% block content %}
+{% block title %}{{ project.title }}{% endblock %}
 
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-12"> 
-          <section class="about_section layout_padding">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12"> 
-                  <div class="detail-box">
-                    <div class="card mb-3" style="width: 100%;">
-                      <a href="">{{ project.title }}</a> 
-                      <div class="card-body">
-                        <h5>On {{project.date}}</h5>
-                        <h5>Location: {{project.locations}}</h5>
-                        <h5>Power: {{project.power}}</h5>
-                        <h5>PV: {{project.pv}}</h5>
-                        <h5>Transformer: {{project.transformer}}</h5>
-                        <h5>Hourly data: {{project.hourlyData}}</h5>
-                        <h5>Daily data: {{project.dailyData}}</h5>
-                        <h5>Monthly data: {{project.monthlyData}}</h5>
-                        <h5>Warning: {{project.warning}}</h5>
-                        <h5>History: {{project.history}}</h5>
-                        <h5>Dash board:</h5>
-                        <div class="iframe-container">
-                          {{project.dashBoard|safe|linebreaks}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+{% block content %}
+<div class="container py-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'projects' %}">Dự án</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ project.title }}</li>
+    </ol>
+  </nav>
+
+  <!-- Project Card -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h3 class="card-title text-success mb-4">{{ project.title }}</h3>
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <p><strong>📅 Ngày:</strong> {{ project.date }}</p>
+          <p><strong>📍 Địa điểm:</strong> {{ project.locations }}</p>
+          <p><strong>⚡ Công suất:</strong> {{ project.power }}</p>
+          <p><strong>🔧 Thiết bị PV:</strong> {{ project.pv }}</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>🔌 Máy biến áp:</strong> {{ project.transformer }}</p>
+          <p><strong>⏱ Dữ liệu theo giờ:</strong> {{ project.hourlyData }}</p>
+          <p><strong>📊 Dữ liệu theo ngày:</strong> {{ project.dailyData }}</p>
+          <p><strong>📅 Dữ liệu theo tháng:</strong> {{ project.monthlyData }}</p>
         </div>
       </div>
+
+      <div class="mb-4">
+        <p><strong>🚨 Cảnh báo:</strong></p>
+        <div class="alert alert-warning">{{ project.warning }}</div>
+
+        <p><strong>📖 Lịch sử:</strong></p>
+        <div class="alert alert-secondary">{{ project.history }}</div>
+      </div>
+
+      <!-- Dashboard -->
+      <h5 class="mb-3">📈 Dashboard:</h5>
+      <div class="iframe-container mb-3">
+        {{ project.dashBoard|safe|linebreaks }}
+      </div>
     </div>
-    
-    <style>
-      .iframe-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      }
-      .iframe-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-    </style>
-    
-{%endblock%}
+  </div>
+</div>
+
+<!-- Iframe style -->
+<style>
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+  .iframe-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+</style>
+{% endblock %}

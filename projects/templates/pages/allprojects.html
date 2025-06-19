@@ -1,88 +1,68 @@
-{% extends "pages/base.html"%}
+{% extends "pages/base.html" %}
 {% load static %}
-{% block title %}Project{%endblock%}
-{% block content %}
+{% block title %}Dự án{% endblock %}
 
-  <!-- start all project section -->
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-6"> 
-        <section class="about_section layout_padding">
-          <div class="container">
-            <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-              <span>
-                  <span>
-                      <a href="{% url 'home' %}">Trang chủ</a> » 
-                          <span class="breadcrumb_last" aria-current="page">Dự án</span>
-                  </span>
-              </span>    
-          </div>
-          <br>
-            <div class="row">
-              <div class="col-lg-12"> 
-                <div class="detail-box">
-                  <!-- <h2>
-                    Tất cả các dự án của chúng tôi
-                  </h2> -->
-                  <form action="" method="GET" style="display: flex; align-items: center;">
-                    {% csrf_token %}
-                    <input type="text" placeholder="Nhập để tìm kiếm" name="keyword" value="{{ keyword }}" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; flex: 1;" />
-                    <input type="submit" value="Tìm kiếm" style="padding: 10px 20px; background-color: #138717; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-left: 10px;" />
-                  </form>
-                  <br>
-                  {% for project in Projects %}
-                  <div class="card" style="width: 100%; height: 200px;">
-                    <!-- <a href="{% url 'project' project.id %}">{{ project.title }}</a> -->
-                    <a href="{% url 'project' project.slug %}">{{ project.title }}</a>
-                    <div class="card-body">
-                      <!-- <p class="card-text">Địa điểm: {{ project.locations }}</p> -->
-                      <h5>Địa điểm: {{ project.locations }}</h5>
-                      <h5>Công suất: {{ project.power }}</h5>
-                      <h5>Thiết bị: {{ project.pv }}</h5>
-                    </div>
-                  </div>
-                  <br>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% block content %}
+<div class="container py-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dự án</li>
+    </ol>
+  </nav>
+
+  <!-- Search Bar -->
+  <form action="" method="GET" class="d-flex justify-content-center my-4">
+    {% csrf_token %}
+    <input type="text" class="form-control w-50 me-2" placeholder="Tìm kiếm dự án..." name="keyword" value="{{ keyword }}">
+    <button type="submit" class="btn btn-success">🔍 Tìm</button>
+  </form>
+
+  <!-- Project List -->
+  <div class="row g-4">
+    {% for project in Projects %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-success">{{ project.title }}</h5>
+          <p class="card-text mb-1"><strong>📍 Địa điểm:</strong> {{ project.locations }}</p>
+          <p class="card-text mb-1"><strong>⚡ Công suất:</strong> {{ project.power }}</p>
+          <p class="card-text mb-3"><strong>🔧 Thiết bị:</strong> {{ project.pv }}</p>
+          <a href="{% url 'project' project.slug %}" class="btn btn-outline-success mt-auto">Xem chi tiết</a>
+        </div>
       </div>
     </div>
+    {% empty %}
+    <div class="text-center text-muted">Không tìm thấy dự án phù hợp.</div>
+    {% endfor %}
   </div>
-  <!-- end all project section -->
 
-  <!-- Paginator Start -->
-  <style>
-    .pagination a {
-        font-size: 22px; /* Điều chỉnh kích thước chữ cho các liên kết phân trang */
-        margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết phân trang */
-    }
-    .current {
-        font-size: 18px; /* Điều chỉnh kích thước chữ cho phần hiển thị số trang hiện tại */
-    }
-  </style>
-
-  <nav aria-label="Page navigation example">
+  <!-- Pagination -->
+  {% if Projects.paginator.num_pages > 1 %}
+  <nav class="mt-5">
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <div class="pagination">
-                <span class="step-links">
-                    {% if Projects.has_previous %}
-                    <a href="?page={{ Projects.previous_page_number }}">Previous</a>
-                    {% endif %}
+      {% if Projects.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ Projects.previous_page_number }}">« Trước</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">« Trước</span></li>
+      {% endif %}
 
-                    <span class="current">
-                        Page {{ Projects.number }} of {{ Projects.paginator.num_pages }}.
-                    </span>
-                    {% if Projects.has_next %}
-                    <a href="?page={{ Projects.next_page_number }}">Next</a>
-                    {% endif %}
-                </span>
-            </div>
-        </li>
+      <li class="page-item disabled">
+        <span class="page-link">Trang {{ Projects.number }} / {{ Projects.paginator.num_pages }}</span>
+      </li>
+
+      {% if Projects.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ Projects.next_page_number }}">Tiếp »</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">Tiếp »</span></li>
+      {% endif %}
     </ul>
   </nav>
-    <!-- Paginator End -->
-{%endblock%}
+  {% endif %}
+</div>
+{% endblock %}

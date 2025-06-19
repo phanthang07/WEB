@@ -7,12 +7,19 @@
   <section class="service_section layout_padding">
     <div class="container ">
         <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-            <span>
+            <!-- <span>
                 <span>
                     <a href="{% url 'home' %}">Trang chủ</a> » 
                         <span class="breadcrumb_last" aria-current="page">Dịch vụ</span>
                 </span>
-            </span>    
+            </span>     -->
+                    <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dịch vụ</li>
+                </ol>
+            </nav>
         </div>
         <br>
         <div class="heading_container heading_center">

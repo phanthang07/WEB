@@ -1,80 +1,69 @@
 {% extends "pages/base.html"%}
 {% load static %}
-{% block title %}Posts{%endblock%}
+{% block title %}Hỏi đáp{% endblock %}
 {% block content %}
 
-   <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-10"> <!-- Thay đổi từ col-lg-6 thành col-lg-10 để tăng kích thước của container -->
-        <section class="about_section layout_padding">
-          <div class="container">
-            <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-              <span>
-                  <span>
-                      <a href="{% url 'home' %}">Trang chủ</a> » 
-                          <span class="breadcrumb_last" aria-current="page">Hỏi đáp</span>
-                  </span>
-              </span>    
-          </div>
-          <br>
-          <form action="" method="GET">
-            {% csrf_token %}
-            <input type="text" placeholder="Search" name="keyword" value="{{ keyword }}" />
-            <input type="submit" value="Search" />
-          </form>
-          <br>
-            <div class="row">
-              {% for post in Posts %}
-              <div class="col-lg-4"> <!-- Chia mỗi bài post thành 1 col-lg-4 -->
-                <div class="card mb-4">
-                  <div class="card-body text-center">
-                    <!-- <h5>Date: {{ post.date|date:"d-m-Y" }}</h5> -->
-                    <img src="/media/{{post.image}}" class="card-img" width="400" height="280">
-                    <!-- <h5 class="post-title"><a href="{% url 'post' post.id %}">{{ post.title }}</a></h5>   -->
-                    <h5 class="post-title"><a href="{% url 'post' slug=post.slug %}">{{ post.title }}</a></h5>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </section>
+<div class="container py-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Hỏi đáp</li>
+    </ol>
+  </nav>
+
+  <!-- Search Bar -->
+  <form action="" method="GET" class="d-flex justify-content-center my-4">
+    {% csrf_token %}
+    <input type="text" class="form-control w-50 me-2" placeholder="Tìm kiếm bài viết..." name="keyword" value="{{ keyword }}">
+    <button type="submit" class="btn btn-outline-primary">🔍 Tìm</button>
+  </form>
+
+  <!-- Post Grid -->
+  <div class="row g-4">
+    {% for post in Posts %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border-0">
+        {% if post.image %}
+        <img src="/media/{{ post.image }}" class="card-img-top rounded-top" alt="{{ post.title }}">
+        {% endif %}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary">{{ post.title }}</h5>
+          <a href="{% url 'post' slug=post.slug %}" class="mt-auto btn btn-primary btn-sm">Xem chi tiết</a>
+        </div>
       </div>
     </div>
+    {% empty %}
+    <div class="text-center text-muted">Không có bài viết nào phù hợp.</div>
+    {% endfor %}
   </div>
-  
-  <!-- end all project section -->
 
-  <!-- Paginator Start -->
-  <style>
-    .pagination a {
-        font-size: 22px; /* Điều chỉnh kích thước chữ cho các liên kết phân trang */
-        margin: 0 5px; /* Điều chỉnh khoảng cách giữa các liên kết phân trang */
-    }
-    .current {
-        font-size: 18px; /* Điều chỉnh kích thước chữ cho phần hiển thị số trang hiện tại */
-    }
-  </style>
-
-  <nav aria-label="Page navigation example">
+  <!-- Pagination -->
+  {% if Posts.paginator.num_pages > 1 %}
+  <nav class="mt-5">
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <div class="pagination">
-                <span class="step-links">
-                    {% if Posts.has_previous %}
-                    <a href="?page={{ Posts.previous_page_number }}">Previous</a>
-                    {% endif %}
+      {% if Posts.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ Posts.previous_page_number }}">« Trước</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">« Trước</span></li>
+      {% endif %}
 
-                    <span class="current">
-                        Page {{ Posts.number }} of {{ Posts.paginator.num_pages }}.
-                    </span>
-                    {% if Posts.has_next %}
-                    <a href="?page={{ Posts.next_page_number }}">Next</a>
-                    {% endif %}
-                </span>
-            </div>
-        </li>
+      <li class="page-item disabled">
+        <span class="page-link">Trang {{ Posts.number }} / {{ Posts.paginator.num_pages }}</span>
+      </li>
+
+      {% if Posts.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ Posts.next_page_number }}">Tiếp »</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">Tiếp »</span></li>
+      {% endif %}
     </ul>
   </nav>
-    <!-- Paginator End -->
-{%endblock%}
+  {% endif %}
+</div>
+
+{% endblock %}
